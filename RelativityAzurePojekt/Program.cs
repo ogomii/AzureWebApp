@@ -1,8 +1,21 @@
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddApplicationInsightsTelemetry();
+builder.Services.AddDbContext<RelativityAzurePojekt.Models.MyDatabaseContext>(options =>
+{
+    SqlAuthenticationProvider.SetProvider(
+    SqlAuthenticationMethod.ActiveDirectoryDeviceCodeFlow,
+    new CustomAzureSQLAuthProvider());
+    var sqlConnection = new
+    SqlConnection(builder.Configuration.GetConnectionString("MyDbConnection"));
+    options.UseSqlServer(sqlConnection);
+});
 
 var app = builder.Build();
 
