@@ -13,6 +13,6 @@ namespace RelativityAzurePojekt.Models
         {
         }
 
-        public DbSet<RelativityAzurePojekt.Models.Todo> Todo { get; set; }
+        public DbSet<RelativityAzurePojekt.Models.Movie> Movie { get; set; }
     }
 }

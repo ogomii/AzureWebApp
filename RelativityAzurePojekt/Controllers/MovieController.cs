@@ -9,11 +9,11 @@ using RelativityAzurePojekt.Models;
 
 namespace RelativityAzurePojekt.Controllers
 {
-    public class TodosController : Controller
+    public class MovieController : Controller
     {
         private readonly MyDatabaseContext _context;
 
-        public TodosController(MyDatabaseContext context)
+        public MovieController(MyDatabaseContext context)
         {
             _context = context;
         }
@@ -21,7 +21,7 @@ namespace RelativityAzurePojekt.Controllers
         // GET: Todos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Todo.ToListAsync());
+            return View(await _context.Movie.ToListAsync());
         }
 
         // GET: Todos/Details/5
@@ -32,14 +32,14 @@ namespace RelativityAzurePojekt.Controllers
                 return NotFound();
             }
 
-            var todo = await _context.Todo
+            var movie = await _context.Movie
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (todo == null)
+            if (movie == null)
             {
                 return NotFound();
             }
 
-            return View(todo);
+            return View(movie);
         }
 
         // GET: Todos/Create
@@ -53,15 +53,15 @@ namespace RelativityAzurePojekt.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate")] Todo todo)
+        public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate")] Movie movie)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(todo);
+                _context.Add(movie);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(todo);
+            return View(movie);
         }
 
         // GET: Todos/Edit/5
@@ -72,12 +72,12 @@ namespace RelativityAzurePojekt.Controllers
                 return NotFound();
             }
 
-            var todo = await _context.Todo.FindAsync(id);
-            if (todo == null)
+            var movie = await _context.Movie.FindAsync(id);
+            if (movie == null)
             {
                 return NotFound();
             }
-            return View(todo);
+            return View(movie);
         }
 
         // POST: Todos/Edit/5
@@ -85,9 +85,9 @@ namespace RelativityAzurePojekt.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,CreatedDate")] Todo todo)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,CreatedDate")] Movie movie)
         {
-            if (id != todo.ID)
+            if (id != movie.ID)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace RelativityAzurePojekt.Controllers
             {
                 try
                 {
-                    _context.Update(todo);
+                    _context.Update(movie);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TodoExists(todo.ID))
+                    if (!MovieExists(movie.ID))
                     {
                         return NotFound();
                     }
@@ -112,7 +112,7 @@ namespace RelativityAzurePojekt.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(todo);
+            return View(movie);
         }
 
         // GET: Todos/Delete/5
@@ -123,14 +123,14 @@ namespace RelativityAzurePojekt.Controllers
                 return NotFound();
             }
 
-            var todo = await _context.Todo
+            var movie = await _context.Movie
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (todo == null)
+            if (movie == null)
             {
                 return NotFound();
             }
 
-            return View(todo);
+            return View(movie);
         }
 
         // POST: Todos/Delete/5
@@ -138,15 +138,15 @@ namespace RelativityAzurePojekt.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var todo = await _context.Todo.FindAsync(id);
-            _context.Todo.Remove(todo);
+            var movie = await _context.Movie.FindAsync(id);
+            _context.Movie.Remove(movie);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TodoExists(int id)
+        private bool MovieExists(int id)
         {
-            return _context.Todo.Any(e => e.ID == id);
+            return _context.Movie.Any(e => e.ID == id);
         }
     }
 }

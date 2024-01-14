@@ -10,10 +10,10 @@ builder.Services.AddApplicationInsightsTelemetry();
 builder.Services.AddDbContext<RelativityAzurePojekt.Models.MyDatabaseContext>(options =>
 {
     SqlAuthenticationProvider.SetProvider(
-    SqlAuthenticationMethod.ActiveDirectoryDeviceCodeFlow,
-    new CustomAzureSQLAuthProvider());
+        SqlAuthenticationMethod.ActiveDirectoryDeviceCodeFlow,
+        new CustomAzureSQLAuthProvider());
     var sqlConnection = new
-    SqlConnection(builder.Configuration.GetConnectionString("MyDbConnection"));
+        SqlConnection(builder.Configuration.GetConnectionString("MyDbConnection"));
     options.UseSqlServer(sqlConnection);
 });
 
