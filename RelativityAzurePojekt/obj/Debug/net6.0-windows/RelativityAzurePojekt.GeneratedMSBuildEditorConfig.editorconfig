@@ -27,12 +27,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/SEM2_2/żurek/projekt/RelativityAzurePojekt/RelativityAzurePojekt/Views/Movie/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/SEM2_2/żurek/projekt/RelativityAzurePojekt/RelativityAzurePojekt/Views/Movie/Description.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRGVzY3JpcHRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/SEM2_2/żurek/projekt/RelativityAzurePojekt/RelativityAzurePojekt/Views/Movie/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/SEM2_2/żurek/projekt/RelativityAzurePojekt/RelativityAzurePojekt/Views/Review/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3XEluZGV4LmNzaHRtbA==
+[E:/SEM2_2/żurek/projekt/RelativityAzurePojekt/RelativityAzurePojekt/Views/Review/MovieReviews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3XE1vdmllUmV2aWV3cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/SEM2_2/żurek/projekt/RelativityAzurePojekt/RelativityAzurePojekt/Views/Shared/Error.cshtml]

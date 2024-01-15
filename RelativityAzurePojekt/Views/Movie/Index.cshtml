@@ -3,3 +3,56 @@
 *@
 @{
 }
+
+@model List<RelativityAzurePojekt.Models.RatedMovie>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie List</title>
+</head>
+<body>
+    <h2>Movie List</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().movie.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().movie.ReleaseDate)
+                </th>
+                <th>
+                    <a>Rating</a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ratedMovie in Model)
+            {
+                <tr>
+                    <td>
+                        <a href="@Url.Action("Description", "Movie", new { id = ratedMovie.movie.ID })">
+                            @Html.DisplayFor(modelItem => ratedMovie.movie.Title)
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ratedMovie.movie.ReleaseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ratedMovie.ratingAvg)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("MovieReviews", "Review", new { id = ratedMovie.movie.ID })">Show reviews</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        @Html.ActionLink("Add New Movie", "Create")
+    </p>
+</body>
+</html>

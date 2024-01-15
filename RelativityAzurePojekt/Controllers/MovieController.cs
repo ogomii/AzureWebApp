@@ -18,14 +18,24 @@ namespace RelativityAzurePojekt.Controllers
             _context = context;
         }
 
-        // GET: Todos
+        // GET: Movie
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Movie.ToListAsync());
+            List<Movie> movies = await _context.Movie.ToListAsync();
+            List<RatedMovie> ratedMovies = new List<RatedMovie>();
+            foreach(var movie in movies)
+            {
+                //double averageStars = _context.Review
+                //.Where(r => r.MovieID == movie.ID)
+                //.Average(r => r.Stars);
+                ratedMovies.Add(new RatedMovie(movie, 5));
+            }
+
+            return View(ratedMovies);
         }
 
-        // GET: Todos/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Movie/Description/5
+        public async Task<IActionResult> Description(int? id)
         {
             if (id == null)
             {
@@ -42,18 +52,18 @@ namespace RelativityAzurePojekt.Controllers
             return View(movie);
         }
 
-        // GET: Todos/Create
+        // GET: Movie/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Todos/Create
+        // POST: Movie/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate")] Movie movie)
+        public async Task<IActionResult> Create([Bind("ID,Title,Description,ReleaseDate")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +74,7 @@ namespace RelativityAzurePojekt.Controllers
             return View(movie);
         }
 
-        // GET: Todos/Edit/5
+        // GET: Movie/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,12 +90,12 @@ namespace RelativityAzurePojekt.Controllers
             return View(movie);
         }
 
-        // POST: Todos/Edit/5
+        // POST: Movie/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,CreatedDate")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Description,ReleaseDate")] Movie movie)
         {
             if (id != movie.ID)
             {
@@ -115,7 +125,7 @@ namespace RelativityAzurePojekt.Controllers
             return View(movie);
         }
 
-        // GET: Todos/Delete/5
+        // GET: Movie/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +143,7 @@ namespace RelativityAzurePojekt.Controllers
             return View(movie);
         }
 
-        // POST: Todos/Delete/5
+        // POST: Movie/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

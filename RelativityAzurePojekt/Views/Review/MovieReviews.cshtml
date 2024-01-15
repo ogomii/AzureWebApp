@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<RelativityAzurePojekt.Models.Review>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review List</title>
+</head>
+<body>
+    <h2>Review List</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Stars)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Opinion)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var review in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => review.Stars)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => review.Opinion)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Movie")
+    </div>
+</body>
+</html>
