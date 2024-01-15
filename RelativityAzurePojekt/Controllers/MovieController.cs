@@ -25,10 +25,14 @@ namespace RelativityAzurePojekt.Controllers
             List<RatedMovie> ratedMovies = new List<RatedMovie>();
             foreach(var movie in movies)
             {
-                //double averageStars = _context.Review
-                //.Where(r => r.MovieID == movie.ID)
-                //.Average(r => r.Stars);
-                ratedMovies.Add(new RatedMovie(movie, 5));
+                List<Review> reviewList = await _context.Review
+                .Where(r => r.MovieID == movie.ID).ToListAsync();
+                double averageStars = 0;
+                if (reviewList.Count > 0)
+                {
+                    averageStars = reviewList.Average(item => item.Stars);
+                }
+                ratedMovies.Add(new RatedMovie(movie, averageStars));
             }
 
             return View(ratedMovies);
@@ -49,7 +53,16 @@ namespace RelativityAzurePojekt.Controllers
                 return NotFound();
             }
 
-            return View(movie);
+            List<Review> reviewList = await _context.Review
+                .Where(r => r.MovieID == movie.ID).ToListAsync();
+            double averageStars = 0;
+            if (reviewList.Count > 0)
+            {
+                averageStars = reviewList.Average(item => item.Stars);
+            }
+            RatedMovie ratedMovie = new RatedMovie(movie, averageStars);
+
+            return View(ratedMovie);
         }
 
         // GET: Movie/Create

@@ -42,7 +42,14 @@
                         @Html.DisplayFor(modelItem => ratedMovie.movie.ReleaseDate)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => ratedMovie.ratingAvg)
+                        @if (ratedMovie.ratingAvg == 0)
+                        {
+                            <text>N/A</text>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => ratedMovie.ratingAvg)
+                        }
                     </td>
                     <td>
                         <a href="@Url.Action("MovieReviews", "Review", new { id = ratedMovie.movie.ID })">Show reviews</a>

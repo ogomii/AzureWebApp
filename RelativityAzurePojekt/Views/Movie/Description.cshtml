@@ -4,7 +4,7 @@
 @{
 }
 
-@model RelativityAzurePojekt.Models.Movie
+@model RelativityAzurePojekt.Models.RatedMovie
 
 <!DOCTYPE html>
 <html>
@@ -16,29 +16,40 @@
 
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(movie => movie.Title)
+            @Html.DisplayNameFor(model => model.movie.Title)
         </dt>
         <dd>
-            @Html.DisplayFor(movie => movie.Title)
+            @Html.DisplayFor(model => model.movie.Title)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(movie => movie.Description)
+            @Html.DisplayNameFor(model => model.movie.Description)
         </dt>
         <dd>
-            @Html.DisplayFor(movie => movie.Description)
+            @Html.DisplayFor(model => model.movie.Description)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(movie => movie.ReleaseDate)
+            @Html.DisplayNameFor(model => model.movie.ReleaseDate)
         </dt>
         <dd>
-            @Html.DisplayFor(movie => movie.ReleaseDate)
+            @Html.DisplayFor(model => model.movie.ReleaseDate)
+        </dd>
+        <dd>
+            <b>Rating</b><br/>
+            @if (Model.ratingAvg == 0)
+            {
+                <text>N/A</text>
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.ratingAvg)
+            }
         </dd>
     </dl>
 
     <div>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.movie.ID }) |
         @Html.ActionLink("Back to List", "Index")
     </div>
 </body>

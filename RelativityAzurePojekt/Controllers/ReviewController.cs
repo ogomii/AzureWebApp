@@ -26,7 +26,7 @@ namespace RelativityAzurePojekt.Controllers
 
             if (reviews == null || !reviews.Any())
             {
-                return NotFound("No reviews found for the given MovieID.");
+                return View("~/Views/Review/NoReviewFound.cshtml");
             }
 
             return View(reviews);
