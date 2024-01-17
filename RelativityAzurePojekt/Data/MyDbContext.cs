@@ -15,5 +15,6 @@ namespace RelativityAzurePojekt.Models
 
         public DbSet<RelativityAzurePojekt.Models.Movie> Movie { get; set; }
         public DbSet<RelativityAzurePojekt.Models.Review> Review { get; set; }
+        public DbSet<RelativityAzurePojekt.Models.AppUser> AppUser { get; set; }
     }
 }

@@ -31,6 +31,7 @@ namespace RelativityAzurePojekt.Controllers
                 if (reviewList.Count > 0)
                 {
                     averageStars = reviewList.Average(item => item.Stars);
+                    averageStars = Math.Round(averageStars, 2);
                 }
                 ratedMovies.Add(new RatedMovie(movie, averageStars));
             }

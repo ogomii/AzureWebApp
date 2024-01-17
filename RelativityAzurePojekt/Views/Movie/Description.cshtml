@@ -49,8 +49,20 @@
     </dl>
 
     <div>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.movie.ID }) |
-        @Html.ActionLink("Back to List", "Index")
+        @if (Context.Session.GetInt32("userAuthenticated") == 1)
+         {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.movie.ID })
+            <span> | </span>
+            @Html.ActionLink("Review", "AddReview", "Review", new { id = Model.movie.ID })
+            <span> | </span>
+            @Html.ActionLink("Back to List", "Index")
+         }
+         else
+         {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.movie.ID })
+            <span> | </span>
+            @Html.ActionLink("Back to List", "Index")
+         }
     </div>
 </body>
 </html>

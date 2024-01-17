@@ -16,6 +16,7 @@ builder.Services.AddDbContext<RelativityAzurePojekt.Models.MyDatabaseContext>(op
         SqlConnection(builder.Configuration.GetConnectionString("MyDbConnection"));
     options.UseSqlServer(sqlConnection);
 });
+builder.Services.AddSession(options =>{ });
 
 var app = builder.Build();
 
@@ -29,6 +30,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseSession();
 
 app.UseRouting();
 

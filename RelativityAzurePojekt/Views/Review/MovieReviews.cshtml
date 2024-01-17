@@ -41,7 +41,16 @@
     </table>
 
     <div>
-        @Html.ActionLink("Back to List", "Index", "Movie")
+        @if (Context.Session.GetInt32("userAuthenticated") == 1)
+        {
+            @Html.ActionLink("Add review", "AddReview", "Review", new { id = Model.First().MovieID })
+            <span> | </span>
+            @Html.ActionLink("Back to List", "Index", "Movie")
+        }
+        else
+        {
+            @Html.ActionLink("Back to List", "Index", "Movie")
+        }
     </div>
 </body>
 </html>
