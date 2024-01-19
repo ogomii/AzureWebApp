@@ -55,6 +55,8 @@
             <span> | </span>
             @Html.ActionLink("Review", "AddReview", "Review", new { id = Model.movie.ID })
             <span> | </span>
+            @Html.ActionLink("Delete", "Delete", "Movie", new { id = Model.movie.ID })
+            <span> | </span>
             @Html.ActionLink("Back to List", "Index")
          }
          else
