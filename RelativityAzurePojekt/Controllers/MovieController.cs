@@ -5,16 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using RelativityAzurePojekt.Models;
 
 namespace RelativityAzurePojekt.Controllers
 {
     public class MovieController : Controller
     {
+        private readonly ILogger<MovieController> _logger;
         private readonly MyDatabaseContext _context;
 
-        public MovieController(MyDatabaseContext context)
+        public MovieController(ILogger<MovieController> logger, MyDatabaseContext context)
         {
+            _logger = logger;
             _context = context;
         }
 
@@ -73,8 +76,6 @@ namespace RelativityAzurePojekt.Controllers
         }
 
         // POST: Movie/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Title,Description,ReleaseDate")] Movie movie)
@@ -105,8 +106,6 @@ namespace RelativityAzurePojekt.Controllers
         }
 
         // POST: Movie/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Description,ReleaseDate")] Movie movie)

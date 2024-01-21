@@ -8,28 +8,20 @@ namespace RelativityAzurePojekt.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor httpContextAccessor)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _httpContextAccessor = httpContextAccessor;
-        }
+        }    
 
         public IActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         public IActionResult Privacy()
         {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult<string> GetText()
-        {
-            return new OkObjectResult("Succes!");
+            return View("Privacy");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

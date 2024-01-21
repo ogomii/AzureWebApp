@@ -7,10 +7,12 @@ namespace RelativityAzurePojekt.Controllers
 {
     public class ReviewController : Controller
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ILogger<ReviewController> _logger;
+        private readonly IHttpContextAccessor _httpContextAccessor; 
         private readonly MyDatabaseContext _context;
-        public ReviewController(MyDatabaseContext context, IHttpContextAccessor httpContextAccessor)
+        public ReviewController(ILogger<ReviewController> logger, MyDatabaseContext context, IHttpContextAccessor httpContextAccessor)
         {
+            _logger = logger;
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }

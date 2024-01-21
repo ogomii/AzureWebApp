@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using RelativityAzurePojekt.Models;
 
 namespace RelativityAzurePojekt.Controllers
@@ -9,9 +10,11 @@ namespace RelativityAzurePojekt.Controllers
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly MyDatabaseContext _context;
+        private readonly ILogger<AppUserController> _logger;
 
-        public AppUserController(MyDatabaseContext context, IHttpContextAccessor httpContextAccessor)
+        public AppUserController(ILogger<AppUserController> logger, MyDatabaseContext context, IHttpContextAccessor httpContextAccessor)
         {
+            _logger = logger;
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
@@ -70,7 +73,10 @@ namespace RelativityAzurePojekt.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register([Bind("ID,FirstName,LastName,Passwd")] AppUser user)
         {
-            if (ModelState.IsValid)
+            if (user != null && 
+                user.LastName.IsNullOrEmpty() == false &&
+                user.FirstName.IsNullOrEmpty() == false &&
+                user.Passwd.IsNullOrEmpty() == false)
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();

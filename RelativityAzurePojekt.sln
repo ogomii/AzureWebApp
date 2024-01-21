@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelativityAzurePojekt", "RelativityAzurePojekt\RelativityAzurePojekt.csproj", "{91C58EAD-963F-426B-8D4B-8A22AAF95CCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RelativityAzurePojekt", "RelativityAzurePojekt\RelativityAzurePojekt.csproj", "{91C58EAD-963F-426B-8D4B-8A22AAF95CCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelativityAzureTests", "RelativityAzureTests\RelativityAzureTests.csproj", "{08C2FB34-C698-4080-ADBE-5E81B67F8013}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{91C58EAD-963F-426B-8D4B-8A22AAF95CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C58EAD-963F-426B-8D4B-8A22AAF95CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91C58EAD-963F-426B-8D4B-8A22AAF95CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08C2FB34-C698-4080-ADBE-5E81B67F8013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08C2FB34-C698-4080-ADBE-5E81B67F8013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08C2FB34-C698-4080-ADBE-5E81B67F8013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08C2FB34-C698-4080-ADBE-5E81B67F8013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
