@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using RelativityAzurePojekt.Models;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace RelativityAzurePojekt.Controllers
 {
@@ -84,6 +85,7 @@ namespace RelativityAzurePojekt.Controllers
             {
                 _context.Add(movie);
                 await _context.SaveChangesAsync();
+                _logger.LogInformation("Added movie {title}", movie.Title);
                 return RedirectToAction(nameof(Index));
             }
             return View(movie);
@@ -121,6 +123,7 @@ namespace RelativityAzurePojekt.Controllers
                 {
                     _context.Update(movie);
                     await _context.SaveChangesAsync();
+                    _logger.LogInformation("Edited movie {title}", movie.Title);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -164,6 +167,7 @@ namespace RelativityAzurePojekt.Controllers
             var movie = await _context.Movie.FindAsync(id);
             _context.Movie.Remove(movie);
             await _context.SaveChangesAsync();
+            _logger.LogInformation("Deleted movie {title}", movie.Title);
             return RedirectToAction(nameof(Index));
         }
 

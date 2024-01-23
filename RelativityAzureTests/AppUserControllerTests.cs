@@ -44,27 +44,6 @@ namespace RelativityAzureTests
             Assert.IsNotNull(result);
         }
 
-        /*
-        [TestMethod]
-        public async Task Login_ValidUser_ReturnsIndexView()
-        {
-            var user = new AppUser
-            {
-                FirstName = "Robert",
-                LastName = "Kubica",
-                Passwd = "haslo"
-            };
-
-            _context.AppUser.Add(user);
-            await _context.SaveChangesAsync();
-
-            var result = await _controller.Login(user) as ViewResult;
-            Assert.IsNotNull(result);
-            Assert.AreEqual("~/Views/Home/Index.cshtml", result.ViewName);
-
-        }
-        */
-
         [TestMethod]
         public async Task Register_ValidUser_RedirectsToLoginView()
         {

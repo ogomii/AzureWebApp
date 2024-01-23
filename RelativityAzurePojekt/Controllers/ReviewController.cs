@@ -57,6 +57,7 @@ namespace RelativityAzurePojekt.Controllers
             {
                 _context.Add(review);
                 await _context.SaveChangesAsync();
+                _logger.LogInformation("Review added by user {ID}", review.AppUserID);
             }
             List<Review> reviews = await _context.Review
             .Where(r => r.MovieID == review.MovieID)
