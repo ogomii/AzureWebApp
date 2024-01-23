@@ -12,18 +12,21 @@ namespace RelativityAzurePojekt.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-        }    
+        }
 
+        // GET: Home/Index
         public IActionResult Index()
         {
             return View("Index");
         }
 
+        // GET: Home/Index
         public IActionResult Privacy()
         {
             return View("Privacy");
         }
 
+        // GET: Shared/Error
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

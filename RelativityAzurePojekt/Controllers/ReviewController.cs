@@ -37,6 +37,7 @@ namespace RelativityAzurePojekt.Controllers
             return View(reviews);
         }
 
+        // GET: Review/AddReview
         [HttpGet]
         public IActionResult AddReview(int? id)
         {
@@ -48,6 +49,7 @@ namespace RelativityAzurePojekt.Controllers
             return View(review);
         }
 
+        // Post: Review/MovieReviews
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddReview([Bind("ID,MovieID,AppUserID,Stars,Opinion")] Review review)

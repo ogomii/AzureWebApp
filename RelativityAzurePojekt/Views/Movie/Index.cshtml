@@ -59,7 +59,10 @@
         </tbody>
     </table>
     <p>
-        @Html.ActionLink("Add New Movie", "Create")
+         @if (Context.Session.GetInt32("userAuthenticated") == 1)
+         {
+                @Html.ActionLink("Add New Movie", "Create")
+         }
     </p>
 </body>
 </html>

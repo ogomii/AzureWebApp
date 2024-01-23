@@ -19,17 +19,20 @@ namespace RelativityAzurePojekt.Controllers
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
+        // GET: AppUser/Index
         public IActionResult Index()
         {
             return View();
         }
 
+        // GET: AppUser/Login
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        // POST: AppUser/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login([Bind("ID,FirstName,LastName,Passwd")] AppUser user)
@@ -60,6 +63,7 @@ namespace RelativityAzurePojekt.Controllers
             return View();
         }
 
+        // GET: Home/Index
         public IActionResult Logout()
         {
             var session = _httpContextAccessor.HttpContext.Session;
@@ -68,12 +72,14 @@ namespace RelativityAzurePojekt.Controllers
             return View("~/Views/Home/Index.cshtml");
         }
 
+        // GET: AppUser/Index
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
+        // POST: Home/Index
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register([Bind("ID,FirstName,LastName,Passwd")] AppUser user)
